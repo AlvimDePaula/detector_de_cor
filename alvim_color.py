@@ -39,18 +39,17 @@ cv2.namedWindow('Imagem')
 # Função para reagir ao um evento (duplo clique na imagem)
 cv2.setMouseCallback('Imagem', retorno_clique)  # primeiro parametro tem que ser igual ao nome da janela
 
-
 # Função para pegar o nome da cor
 def getcolorname(r, g, b):
     minimo = 10000  # valor alto para se comparar na formula embaixo
     for i in range(len(data)):
         # somatorio da diferença do valor do rgb achado na imagem com os valores registrados no dataset
         soma_rgb = abs(r - int(data.loc[i, "R"])) + abs(g - int(data.loc[i, 'G'])) + abs(b - int(data.loc[i, 'B']))
-        if soma_rgb <= minimo:
+        if (soma_rgb <= minimo):
             minimo = soma_rgb
             nome_cor = data.loc[i, 'nome_cores']
 
-        return nome_cor
+    return nome_cor
 
 while 1:
     cv2.imshow('Imagem', img)
